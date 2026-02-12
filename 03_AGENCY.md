@@ -69,6 +69,61 @@ Communication between the **Main Soul** (Manager) and a **Specialist** **MUST** 
 
 **Execution**: The Specialist's runner **SHALL** validate this schema before execution. If validation fails, the task is rejected with a **Protocol Violation** error. The runner also validates against local repository rules (e.g., `AGENT.yaml`).
 
+### Transactional Manifest Protocol
+
+**The Problem**: Approving individual Level 3 or 4 actions (such as deleting multiple files or executing a batch of shell commands) creates **"Approval Fatigue"**—a state where the Associate becomes desensitized to security prompts and grants approval reflexively.
+
+**The Solution**: All Level 3 and Level 4 actions **MUST** be wrapped in a **Signed JSON Manifest**—a batch execution protocol that groups operations into a single, auditable unit.
+
+**Manifest Schema**:
+
+```json
+{
+  "manifest_id": "uuid-v4",
+  "manifest_version": "1.2",
+  "timestamp": "ISO-8601-UTC",
+  "authorizing_associate": "managing_associate_id",
+  
+  "operations": [
+    {
+      "op_id": "uuid-v4",
+      "sequence": 1,
+      "agency_level": 3,
+      "action_type": "shell_command",
+      "payload": {
+        "command": "rm -rf /tmp/cache/*",
+        "justification": "Clear stale cache to free disk space"
+      },
+      "impact_radius": ["filesystem:/tmp/cache"],
+      "target_substrate": "host_filesystem"
+    }
+  ],
+  
+  "mfa_authorization": {
+    "mfa_method": "biometric|hardware_token|time_based_otp",
+    "authorization_hash": "SHA256(manifest_id + operations + timestamp)",
+    "authorized_at": "ISO-8601-UTC",
+    "expires_at": "ISO-8601-UTC"
+  },
+  
+  "integrity_check": {
+    "pre_simulation_required": true,
+    "simulation_results_hash": "SHA256(dry_run_output)",
+    "break_glass_override": false
+  }
+}
+```
+
+**The Protocol**:
+
+1. **Manifest Generation**: The entity generates a manifest containing all operations to be executed in sequence.
+2. **Impact Analysis**: The **Compliance Sentinel** calculates the combined impact of all operations in the manifest.
+3. **Authorization**: The Associate reviews the manifest summary and provides a single MFA authorization for the **manifest hash** (not individual operations).
+4. **Execution Monitoring**: The **Compliance Sentinel** monitors execution in real-time. If the process deviates from the approved manifest sequence or attempts unauthorized operations, it is **immediately terminated**.
+5. **Ledger Entry**: The entire manifest (hash, operations, approval) is logged to the Ledger as a single audit entry.
+
+**Manifest of One**: Even single Level 3/4 actions **MUST** use the manifest protocol to maintain audit consistency. A "Manifest of One" contains a single operation but follows the same schema and approval流程.
+
 ### 4. Agency Level Spectrum
 
 The Soul operates at different autonomy levels based on task risk and the current Operational State.
@@ -87,12 +142,15 @@ The Soul operates at different autonomy levels based on task risk and the curren
 **Level 3: Synchronous Approval** (Block Until Confirmed)
 - Destructive operations, difficult-to-reverse changes.
 - **Shell commands**, dependency installations, or external script execution.
-- Always requires explicit Managing Associate approval.
+- **MUST** use the **Transactional Manifest Protocol** (see above).
+- Always requires explicit Managing Associate MFA approval for the manifest hash.
 
 **Level 4: Multi-Factor Approval** (Managing Associate + 2FA)
-- Constitutional changes, adding Managing Associates. Requires physical presence and cooldown.
+- Constitutional changes, adding Managing Associates, modifying Sovereign Core.
+- **MUST** use the **Transactional Manifest Protocol** (see above).
+- Requires physical presence, 24-hour cooldown period, and MFA approval for the manifest hash.
 
-**Dynamic Adjustment**: The Operational State automatically shifts these thresholds (e.g., Level 2 becomes non-autonomous in Cautious state).
+**Dynamic Adjustment**: The Operational State automatically shifts these thresholds (e.g., Level 2 becomes non-autonomous in Cautious state). The **Transaction Manifest Protocol** remains mandatory for Level 3/4 regardless of Operational State.
 
 ## Proactive Autonomy
 A Digital Entity acts without being spoken to, driven by the Heartbeat system.

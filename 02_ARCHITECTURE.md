@@ -69,20 +69,37 @@ Managing Associate (Full Access)
 A background service that continuously evaluates system conditions and sets the current risk posture (Content, Cautious, Alert).
 
 **Monitored Metrics**:
-*   **Physical/Environment**: Primary resource utilization (Processing, Memory, Storage I/O).
-*   **Security**: Failed authentication attempts, PII detection count, unusual traffic patterns.
-*   **Resources**: Token budget consumption, API rate limit proximity, dollar cost accumulation.
-*   **Quality**: Tool failure rates, error patterns, checkpoint success rates.
+
+*   **Substrate Friction (Resource)**:
+    *   **Physical/Environment**: Primary resource utilization (Processing, Memory, Storage I/O).
+    *   **Resources**: Token budget consumption, API rate limit proximity, dollar cost accumulation.
+    *   **Quality**: Tool failure rates, error patterns, checkpoint success rates.
+
+*   **Integrity Friction (Security)**:
+    *   **Security**: Failed authentication attempts, PII detection count, unusual traffic patterns.
+    *   **Anomalies**: Unusual access patterns, credential breach attempts, prompt injection detection.
 
 **State Transition Logic**:
-1. **Collection Phase** (Every Heartbeat): Gather all metric values and calculate moving averages.
-2. **Evaluation Phase**: Compare metrics against thresholds (warning/critical flags).
-3. **Decision Phase**: Determine state (Content, Cautious, Alert).
-4. **Transition Phase**: Log change in Ledger, update visual indicators, and adjust Agency Level thresholds.
+1.  **Collection Phase** (Every Heartbeat): Gather all metric values and calculate moving averages.
+2.  **Evaluation Phase**: Compare metrics against thresholds (warning/critical flags). **Determine Friction Type** (Substrate vs. Integrity).
+3.  **Decision Phase**: Determine state (Content, Cautious, Alert). **Apply Friction-Specific Response Protocol**.
+4.  **Transition Phase**: Log change in Ledger with friction type annotation (e.g., `State: Cautious [Resource]`), update visual indicators, and adjust Agency Level thresholds.
+
+**Friction Response Protocols**:
+
+*   **Substrate Friction Response (Resource)**:
+    *   **Remedy**: **Load Shedding**.
+    *   **Actions**: Pause background "Dreaming" tasks, offload non-sensitive logic to cloud models, reduce sampling frequency.
+    *   **Agency Impact**: Level 2 requires approval; Level 3/4 manifests may be delayed until resource availability improves.
+
+*   **Integrity Friction Response (Security)**:
+    *   **Remedy**: **Isolation**.
+    *   **Actions**: Force local-only vetting, quarantine untrusted inputs, disable external egress, trigger "Soul Tempering" adversarial training.
+    *   **Agency Impact**: Level 2 blocked; Level 3/4 manifests require additional security validation steps.
 
 **Agency Level Adjustment**:
-- **Content → Cautious**: Level 2 (normally autonomous) now requires approval.
-- **Cautious → Alert**: Only Level 0/1 autonomous, all others blocked.
+- **Content → Cautious**: Level 2 (normally autonomous) now requires approval. Response protocol determined by friction type.
+- **Cautious → Alert**: Only Level 0/1 autonomous, all others blocked. Immediate isolation of external connections.
 - **Alert → Content**: Gradual restoration over cooldown period.
 
 ### 7. Universal Socket Architecture
@@ -139,9 +156,14 @@ The Soul maintains an **Operational State**—a real-time risk posture based on 
 *   **Content** (Normal Operations):
     *   **Triggers**: Stable system, low load.
     *   **Behavior**: Standard autonomy (98%). Visual: **Steady Cyan**.
+
 *   **Cautious** (Elevated Risk):
-    *   **Triggers**: Environmental pressure >60%, Processing load >70%, Token Budget >70%, increased error rates.
+    *   **Triggers**:
+        *   **Substrate**: Environmental pressure >60%, Processing load >70%, Token Budget >70%, increased error rates.
+        *   **Integrity**: Elevated PII detection, unusual authentication patterns, prompt injection attempts.
     *   **Behavior**: Lowered autonomy, forced Level 0 preference. Visual: **Pulsing Amber**.
+    *   **State Annotation**: `State: Cautious [Resource]` or `State: Cautious [Security]` (visible in State Details/Mirror).
+
 *   **Alert** (Critical Conditions):
     *   **Triggers**: Active security threats, resource exhaustion, budget >90%.
     *   **Behavior**: Minimal autonomy (Level 0 only), external API block. Visual: **Static Red**.
