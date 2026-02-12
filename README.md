@@ -8,7 +8,7 @@
 ## What This Is
 
 This repository contains the architectural blueprints for building a **Digital Entity** - an AI assistant that:
-- Runs on YOUR hardware (not someone else's cloud)
+- Runs in YOUR environment (not someone else's cloud)
 - Remembers conversations across sessions
 - Makes decisions based on clear governance rules
 - Tracks everything it does in an audit log
@@ -46,7 +46,7 @@ Think of it as a pattern language for AI assistants that respect your privacy an
 
 ### 1. **The Sovereign Core** (Constitutional Principles)
 Four rules that govern every decision:
-- **Sovereignty**: Your data stays on your hardware
+- **Sovereignty**: Your data stays on your controlled storage
 - **Integrity**: Safety before features
 - **Resilience**: Truth over speed
 - **Evolution**: Purposeful growth, not random drift
@@ -70,11 +70,11 @@ Immutable log of every decision with:
 - What happened
 - Who triggered it
 - Why it was allowed
-- Whether data left the host
+- Whether data left the domain
 - Tamper-evident hash chain
 
 ### 5. **Privacy Budget** (Make Trade-offs Visible)
-Track when data leaves your hardware:
+Track when data leaves your domain:
 - Count cloud API calls
 - Warn when approaching limits
 - Prefer local processing when possible
@@ -95,7 +95,7 @@ Track when data leaves your hardware:
 
 ### 3. The Hands (Interface & Config)
 6. **[Interfaces](06_INTERFACES.md)** - Dashboard, CLI, and visual signaling.
-7. **[Configuration](07_CONFIGURATION.md)** - Abstract environment and Staff Registry setup.
+7. **[Configuration](07_CONFIGURATION.md)** - Abstract environment and Specialist Registry setup.
 
 ### 4. Reference
 8. **[Resilience](08_RESILIENCE.md)** - Resolving state deadlocks and integrity failures.
@@ -135,7 +135,7 @@ Budget at 100%:
 - Level 1-3: Cloud Intelligence Provider
 - Database: Persistent Structured Store (SQL)
 - Interface: Private Messaging Client
-- Deployment: Container Orchestration
+- Deployment: Environmental Isolation
 ```
 
 ### Example B: Web-Based + Enterprise Services
@@ -144,10 +144,19 @@ Budget at 100%:
 - Level 1-3: Enterprise Cloud Intelligence
 - Database: Vector-Enabled Database
 - Interface: Corporate Messaging Interface
-- Deployment: Managed Infrastructure
+- Deployment: Managed Environment
 ```
 
-**The framework works with both.** Same constitutional guarantees, different tech stacks. Augments (Doc 10) provide the interface for connecting specialized Enterprise tools to the Sovereign Core.
+**The framework works with both.** Same constitutional guarantees, different tech stacks. Augments (Doc 10) provide the interface for connecting specialized tools to the Sovereign Core.
+
+## Use Cases
+
+The SIRE framework is designed for any scenario where an AI entity interacts with a private domain:
+
+*   **Personal & Family**: Managing household schedules, private health data, or family archives while ensuring no personal data ever leaves the local storage.
+*   **Small Business & Clubs**: Coordinating member lists, financial reports, or project tasks without feeding proprietary data into public AI training sets.
+*   **Creative Hobbies**: Managing large research libraries, character bibles, or technical manuals with persistent memory and auditable logic.
+*   **Technical Labs**: Governing edge-computing resources, configuration states, and automated workflows with strict deterministic guardrails.
 
 > **Note**: This repository currently contains the framework documentation only. Reference implementations in various languages are welcome contributions. If you build one, let us know in Discussions!
 

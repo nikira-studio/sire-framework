@@ -4,7 +4,7 @@
 All state for the specific SIRE instance lives in `/app/data` (mapped to `data/` locally).
 
 *   `config/SOUL.md`: Personality definition and evolutionary state.
-*   `config/identity.yaml`: System identity (Timezone, Server Name).
+*   `config/identity.yaml`: System identity (Timezone, Domain Name).
 *   `config/models.yaml`: Intelligence Level configuration (Levels 0-3).
 *   `db/`: Structured databases (SIRE "Brain").
 *   `memory/`: Vector stores and session transcripts.
@@ -25,34 +25,35 @@ Define the physical grounding of the entity.
 
 ```yaml
 system_name: "SIRE"
-server_name: "Host"
+domain_name: "Local"
 timezone: "UTC"
 version: "1.0.0"
-vram_priority: "shared" # Options: shared, hybrid, exclusive
+memory_priority: "shared" # Options: shared, hybrid, exclusive
 
 # Operational State Monitoring
 monitoring:
   heartbeat_seconds: 60
   state_thresholds:
     cautious:
-      vram_utilization: 0.60
-      cpu_load: 0.70
+      memory_utilization: 0.60
+      processing_load: 0.70
       error_rate: 0.05
     alert:
-      vram_utilization: 0.90
-      cpu_load: 0.90
+      memory_utilization: 0.90
+      processing_load: 0.90
       security_events_threshold: 3
+```
 
 ## Specialist Registry (`specialists.yaml`)
 Define specialized sub-agents and their directory jails.
 
 ```yaml
 specialists:
-  - name: "System Specialist"
-    role: "sys_ops"
+  - name: "Operations Specialist"
+    role: "ops_lead"
     level: 2
-    base_dir: "/opt/system-configs" # Directory Jail
-    augments: ["remote_access", "service_mgmt"]
+    base_dir: "/app/domain-configs" # Directory Jail
+    augments: ["domain_access", "state_mgmt"]
   - name: "Information Specialist"
     role: "data_intel"
     level: 1
@@ -69,15 +70,15 @@ To prevent "Memory Drift" and ensure the entity always has the correct Single So
 *   **Example**:
     ```yaml
     triggers:
-      - keywords: ["virtualization", "container", "orchestration"]
-        inject: ["skills/SYTEM_STANDARDS.md"]
-      - keywords: ["security", "firewall", "routing"]
+      - keywords: ["virtualization", "isolation", "orchestration"]
+        inject: ["skills/SYSTEM_STANDARDS.md"]
+      - keywords: ["security", "connectivity", "communications"]
         inject: ["skills/SEC_OPS.md"]
     ```
 *   **The Result**: The Specialist's context window is automatically "pre-loaded" with the required manual, ensuring they never operate on generic (potentially hallucinated) knowledge.
 
 ## Environment Variables (`.env`)
-Runtime secrets and infrastructure settings.
+Runtime secrets and domain settings.
 
 *   `LLM_PROVIDER_KEY`: Access to high-level intelligence.
 *   `MESSAGING_PLATFORM_TOKEN`: Nervous system access.
