@@ -44,3 +44,9 @@ The Ledger is not just a log; it is a learning mechanism. When a tool fails or s
 To prevent "Instruction Drift," SIRE periodically reviews "Trauma" logs:
 *   **Proposal**: The Manager proposes specific updates to a Technician's handbook (`AGENT.md`) to codify lessons learned.
 *   **Evolution**: The Managing Associate approves these "Genetic Patches," permanently upgrading the system's baseline competence.
+## 4. Point-in-Time Recovery (PITR)
+To maintain **Integrity** and **Resilience**, the Ledger protocol **MUST** support the restoration of previous valid states.
+
+*   **Requirement**: The system must be capable of reverting its entire cognitive and operational state to any previous hash-verified Ledger entry.
+*   **Soul Rollback**: This provides a native mechanism to reverse "Instruction Drift," catastrophic reasoning errors, or "Trauma" by returning to a baseline of known truth.
+*   **Audit**: A PITR event is itself a recorded action, preserving the timeline of the entity's evolution even through a recovery event.

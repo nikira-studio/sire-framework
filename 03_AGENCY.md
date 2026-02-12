@@ -132,3 +132,9 @@ SIRE maintains a "Pragmatic Execution" mindset to prevent the **Mirage of Autono
 1.  **Checkpoint Gating**: Every multi-step task starts with a success metric. If stalled for >5 loops, SIRE forces a manual intervention.
 2.  **Rectification**: The `SelfHealing` module attempts immediate state resets or service restarts.
 3.  **Learning Capture**: Successful fixes are ingested as **Learning facts**, transitioning from reactive fixing to proactive prevention.
+### 5. Sandboxed Proposal Environments (Simulation)
+To satisfy the principle of **Integrity**, all high-impact or destructive operations (Level 3 and 4) **MUST** be simulated before commitment.
+
+*   **The Simulation**: The system generates a "non-destructive clone" or a virtualized representation of the target state.
+*   **Dry-Run Report**: Before execution, the entity must produce a summary of "What will change," including potential side effects.
+*   **Verification**: The simulation must confirm the "math maths"—ensuring technical constraints and Sovereign Principles are maintained—before the actual hardware or configuration is touched.

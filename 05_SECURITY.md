@@ -117,3 +117,10 @@ To prevent "Hallucination Drift," SIRE implements a dual-check validation layer 
     2.  Does the output violate any Sovereign Principles?
     3.  Does the output match the provided technical constraints 1:1?
 *   **The Kill-Switch**: If the verification fails, the Logician kills the process, logs an "Integrity Discrepancy" to the Ledger, and forces the system into a **Cautious State**.
+### 11. Sovereignty Linter (Deterministic Integrity Scan)
+To distinguish between "Reasoned Compliance" and "Deterministic Enforcement," SIRE mandates a non-stochastic validation layer.
+
+*   **The Linter**: All AI-generated executable code, shell commands, or system mutations **MUST** pass an automated, rules-based validation scan prior to execution.
+*   **Non-LLM Logic**: This scan **MUST** be performed by a deterministic, non-AI process (e.g., Regex, Static Analysis, or a compiled binary tool). This ensures that "hallucinated compliance" cannot bypass the framework's core rules.
+*   **The Logic**: If the Linter detects a violation of the **Constitutional Sentinel** rules (e.g., unauthorized network egress, credential access, or directory breakout), it blocks the command immediately, regardless of the LLM's justification.
+*   **Verification**: The Logician (Section 10) provides model-to-model oversight, while the Linter (Section 11) provides literal code-level enforcement.
