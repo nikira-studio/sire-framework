@@ -6,14 +6,14 @@ The **Ledger** is the central nervous system of accountability. It is an immutab
 
 A SIRE implementation **MUST** fulfill the following cryptographic requirements for its audit log:
 
-### The Hash Chain
+### The Hash Chain (MANDATORY)
 To prevent history rewriting (gaslighting or cover-ups), the Ledger implements a **SHA-256 Hash Chain**:
-*   **Structure**: `Entry(N).hash` = `SHA256(Entry(N).canonical_content + Entry(N-1).hash)`
-*   **Verification**: The system must validate the chain integrity on startup.
+*   **Architectural Requirement**: The Ledger MUST implement a cryptographically secure SHA-256 hash chain where `Entry(N).hash` = `SHA256(Entry(N).canonical_content + Entry(N-1).hash)`.
+*   **Verification**: The system MUST validate the chain integrity on startup before allowing any operations.
 *   **Tamper Response**: If the hash chain is broken, the system **MUST** immediately enter **Alert State** and lock down all autonomy until the Managing Associate intervenes.
 
-### Canonical Serialization (Deterministic Hashing)
-To ensure the audit log remains verifiable across different programming languages (e.g., a Python implementation verifying a Rust Ledger), all entries **MUST** be serialized into a **Canonical Format** using the **JSON Canonicalization Scheme (JCS)** before hashing.
+### Canonical Serialization (MANDATORY - JCS Standard)
+**Architectural Requirement**: To ensure the audit log remains verifiable across different programming languages (e.g., a Python implementation verifying a Rust Ledger), all entries **MUST** be serialized into a **Canonical Format** using the **JSON Canonicalization Scheme (RFC 8785)** before hashing. This ensures cross-platform hash consistency and allows implementations in any language to verify the same Ledger.
 
 **The JCS Standard (RFC 8785)**:
 *   **Key Sorting**: Dictionary/Map keys must be sorted alphabetically (ASCII order).
@@ -103,13 +103,13 @@ The Ledger is not just a log; it is a learning mechanism. When a tool fails or s
 To prevent "Instruction Drift," SIRE periodically reviews "Trauma" logs:
 *   **Proposal**: The Manager proposes specific updates to a **Specialist's handbook** (`AGENT.md`) to codify lessons learned.
 *   **Evolution**: The Managing Associate approves these "Genetic Patches," permanently upgrading the system's baseline competence.
-## 5. Tiered Archival & Pruning (Checkpoint Protocol)
-To prevent "Soul Bloat" and performance degradation while maintaining **Integrity**, the Ledger implements a **Checkpoint Protocol** for tiered archival.
+## 5. Tiered Archival & Pruning (Checkpoint Protocol - MANDATORY)
+**Architectural Requirement**: To prevent "Soul Bloat" and performance degradation while maintaining **Integrity**, the Ledger MUST implement a **Checkpoint Protocol** for tiered archival.
 
-**The Protocol**:
-*   **Cold Segment Compression**: After a configurable period (default: 90 days), "Cold" segments of the hash chain are compressed into a single **Consolidated Checkpoint Entry**.
-*   **Merkle Root Preservation**: The consolidated entry contains the Merkle Root of all archived entries, preserving the audit trail without requiring the full raw history in active memory.
-*   **Verification Continuity**: The checkpoint entry itself is hashed and linked into the active chain, ensuring cryptographic continuity from genesis to present.
+**MANDATORY Protocol Requirements**:
+*   **Cold Segment Compression**: After a configurable period (default: 90 days), "Cold" segments of the hash chain MUST be compressed into a single **Consolidated Checkpoint Entry**.
+*   **Merkle Root Preservation**: The consolidated entry MUST contain the Merkle Root of all archived entries, preserving the audit trail without requiring the full raw history in active memory.
+*   **Verification Continuity**: The checkpoint entry itself MUST be hashed and linked into the active chain, ensuring cryptographic continuity from genesis to present.
 
 **Checkpoint Entry Structure**:
 ```json
@@ -132,9 +132,9 @@ To prevent "Soul Bloat" and performance degradation while maintaining **Integrit
 *   **Cold Storage**: Archived segments may be stored in compressed form with optional tiered storage (e.g., SSD for recent checkpoints, HDD for deep archives).
 *   **Query Performance**: PITR requests for archived segments must resolve within 5 seconds (including decompression time).
 
-## 6. Point-in-Time Recovery (PITR)
-To maintain **Integrity** and **Resilience**, the Ledger protocol **MUST** support the restoration of previous valid states.
+## 6. Point-in-Time Recovery (PITR - MANDATORY)
+**Architectural Requirement**: To maintain **Integrity** and **Resilience**, the Ledger protocol **MUST** support the restoration of previous valid states.
 
-*   **Requirement**: The system must be capable of reverting its entire cognitive and operational state to any previous hash-verified Ledger entry (including checkpoint boundaries).
+*   **MANDATORY Requirement**: The system MUST be capable of reverting its entire cognitive and operational state to any previous hash-verified Ledger entry (including checkpoint boundaries).
 *   **Soul Rollback**: This provides a native mechanism to reverse "Instruction Drift," catastrophic reasoning errors, or "Trauma" by returning to a baseline of known truth.
-*   **Audit**: A PITR event is itself a recorded action, preserving the timeline of the entity's evolution even through a recovery event.
+*   **Audit**: A PITR event MUST be recorded as a Ledger entry, preserving the timeline of the entity's evolution even through a recovery event.

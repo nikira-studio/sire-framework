@@ -27,13 +27,16 @@ Before executing any skill (especially those sourced externally), SIRE must perf
 
 *   **Level 4 (Constitutional)**: Structural changes requiring multi-factor approval and 24-hour cooldown periods.
 
-### The Mirage of Autonomy: Guardrails Against Illusion
+**The Mirage of Autonomy: Guardrails Against Illusion**
 
 **The Problem**: LLMs can appear autonomous while actually looping unproductively or burning tokens without measurable advancement. This is the **Mirage of Autonomy**—the appearance of progress without the reality.
 
+**MANDATORY: Stall Detection Protocol**
+**Architectural Requirement**: The system MUST implement a system-wide Iteration Counter that enforces checkpoint-based execution. If no new checkpoint is reached within five loops, the system MUST force a manual intervention and pause the task. This prevents the Mirage of Autonomy by requiring measurable progress.
+
 **Core Principle**: **Progress over Process**
-- Every autonomous task MUST defines success metrics and checkpoints.
-- **Stall Detection**: If no new checkpoint is reached for 5 loops, the system forces a stop and requests manual intervention.
+- Every autonomous task MUST define success metrics and checkpoints before execution begins.
+- **Stall Detection**: MANDATORY - If no new checkpoint is reached for 5 loops, the system forces a stop and requests manual intervention.
 - **Token Budget**: Maximum tokens allocated per task to prevent runaway costs.
 
 **Pre-Execution Integrity Check**
@@ -194,8 +197,10 @@ SIRE maintains a "Pragmatic Execution" mindset to prevent the **Mirage of Autono
 2.  **Rectification**: The `SelfHealing` module attempts immediate state resets or service restarts.
 3.  **Learning Capture**: Successful fixes are ingested as **Learning facts**, transitioning from reactive fixing to proactive prevention.
 ### 5. Sandboxed Proposal Environments (Simulation)
-To satisfy the principle of **Integrity**, all high-impact or destructive operations (Level 3 and 4) **MUST** be simulated before commitment.
+**MANDATORY: Simulation Protocol**
+**Architectural Requirement**: All Level 3 and 4 operations MUST be simulated in a Sandboxed Proposal Environment (dry-run) before being committed to the Ledger. This ensures system integrity by validating that operations will not violate technical constraints or Sovereign Principles before actual execution.
 
-*   **The Simulation**: The system generates a "non-destructive clone" or a virtualized representation of the target state.
-*   **Dry-Run Report**: Before execution, the entity must produce a summary of "What will change," including potential side effects.
-*   **Verification**: The simulation must confirm the claims are valid—ensuring technical constraints and Sovereign Principles are maintained—before the actual environment or configuration is touched.
+**The Simulation Process**:
+*   **Environment**: The system generates a "non-destructive clone" or a virtualized representation of the target state.
+*   **Dry-Run Report**: Before execution, the entity MUST produce a summary of "What will change," including potential side effects and impact analysis.
+*   **Verification**: The simulation MUST confirm the claims are valid—ensuring technical constraints and Sovereign Principles are maintained—before the actual environment or configuration is touched. If verification fails, the operation MUST be blocked.

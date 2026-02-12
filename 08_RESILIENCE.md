@@ -27,13 +27,13 @@ To prevent "Soul Bloat" and maintain token efficiency, SIRE implements a tiered 
 *   **Confidence Decay**: Memories or "Lessons Learned" that are not accessed or re-confirmed over a period of 30 days lose "Confidence" and are automatically pruned from the **Hot Context** (Tier 1) and archived into the **Cold Context** (Tier 3).
 *   **Summarization**: During "Dream Mode," the entity summarizes cold memory clusters into dense "Biological Nuggets" to preserve wisdom without the token cost of raw logs.
 
-### 4. PASS (Pre-Authorized Safety Scripts) Protocol
-To ensure that "Alert Mode" does not lead to a total functional shutdown (locking the brakes in the rain), SIRE implements a library of **Deterministic Fallbacks**—pre-written, non-AI scripts authorized to run during Alert states.
+### 4. PASS (Pre-Authorized Safety Scripts) Protocol (MANDATORY)
+**Architectural Requirement**: To ensure that "Alert Mode" does not lead to a total functional shutdown (locking the brakes in the rain), SIRE implements a library of **Deterministic Fallbacks**—pre-written, non-AI scripts that are authorized to run during Alert states.
 
-**The Protocol**:
-*   **Deterministic Execution**: PASS scripts are pre-authorized, non-AI executables that maintain local integrity without real-time LLM reasoning (which is disabled during Alert states).
-*   **Authorization**: PASS scripts are signed during system initialization with the Managing Associate's authorization. They cannot be modified at runtime without a Level 4 Manifest.
-*   **Scope**: PASS scripts are limited to integrity-preserving actions on the Domain Substrate (e.g., local filesystem operations, service restarts, network isolation).
+**MANDATORY Protocol Requirements**:
+*   **Deterministic Execution**: PASS scripts MUST be pre-authorized, non-AI executables that maintain local integrity without real-time LLM reasoning (which is disabled during Alert states).
+*   **Authorization**: PASS scripts MUST be signed during system initialization with a Managing Associate's authorization. They cannot be modified at runtime without a Level 4 Manifest.
+*   **Scope**: PASS scripts MUST be limited to integrity-preserving actions on the Domain Substrate (e.g., local filesystem operations, service restarts, network isolation).
 
 **PASS Script Categories**:
 *   **Emergency Shutdown**: "Shut down internet gateway," "Terminate all external connections"
@@ -71,7 +71,20 @@ pass_registry:
 *   **Rate-Limiting Protection**: To prevent auto-trigger abuse, PASS scripts are rate-limited to a maximum of **1 auto-execution per hour** per script type. Subsequent triggers require explicit Managing Associate authorization via Break-Glass Console.
 *   **Post-Execution Review**: All PASS script executions (both auto-triggered and manual) trigger a mandatory Managing Associate review alert. The Managing Associate must acknowledge the execution and review the system state snapshot before subsequent operations are permitted.
 *   **Manual Override**: Managing Associate can trigger PASS scripts manually via Break-Glass Console without entering the cognitive layer.
-*   **Rollback Protection**: PASS scripts cannot modify the Ledger, SOUL.md, or any constitutional documents. They are strictly limited to Domain Substrate operations.
+**Rollback Protection**: PASS scripts cannot modify the Ledger, SOUL.md, or any constitutional documents. They are strictly limited to Domain Substrate operations.
+
+### 5. Heartbeat Integrity (MANDATORY)
+**Architectural Requirement**: The system MUST implement a 30-minute Audit Cycle to verify core document hashes against the Ledger to detect silent corruption. This ensures Ontological Honesty by continuously validating that the system's operational state matches the immutable audit trail.
+
+**MANDATORY Audit Cycle Requirements**:
+*   **Re-Verification**: Every 30 minutes, the system MUST check the current state of core documents (SOUL.md, IDENTITY.md, GUIDELINES.md) against the Ledger hash to detect silent corruption.
+*   **Context Scanning**: Scan internal domains and projects for new external triggers, tasks, or configuration changes that may require Ledger updates.
+*   **Health Update**: Refresh `heartbeat.md` with a "One-Glance" status report, ensuring visual transparency for the Associate.
+
+**Integrity Enforcement**:
+*   **Hash Mismatch**: If a core document's hash does not match the Ledger entry, the system MUST immediately enter **Alert State** and initiate an Integrity investigation.
+*   **Silent Corruption Detection**: The Audit Cycle MUST detect unauthorized modifications to constitutional documents that bypass the normal approval workflow.
+*   **Consistency Verification**: Verify that all Specialist configurations, threshold presets, and routing strategies match their Ledger-logged state.
 
 ## System Connectivity
 Ensure all core services are reachable and authenticated.

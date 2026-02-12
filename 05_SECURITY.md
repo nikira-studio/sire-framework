@@ -59,11 +59,10 @@ routing_strategy:
 - **Soft Limits** (Default): Warn when approaching limit (70%). Adjust Operational State to Cautious. Adjust routing curve to conserve budget.
 - **Hard Limits**: Block external calls at 100% until Managing Associate override.
 
-### 3. The Vault & Keys
+### 3. The Vault & Keys (MANDATORY - Credential Air-Gap)
+**Architectural Requirement**: To satisfy the principle of **Sovereignty**, the entity's reasoning stream **MUST** be air-gapped from raw authentication credentials.
 
 **Credential Brokering (Reasoning/Credential Air-Gap)**
-
-To satisfy the principle of **Sovereignty**, the entity's reasoning stream **MUST** be air-gapped from raw authentication credentials.
 
 *   **The Air-Gap**: The Reasoning Core (LLM) **SHALL NOT** have direct visibility of raw SSH keys, master passwords, or API secrets during routine operations.
 *   **The Pattern**: Implement a **Broker Pattern** where the **KeyManager** provides scoped, task-specific, or time-bound tokens rather than raw credentials.
@@ -164,8 +163,8 @@ To prevent "Hallucination Drift," SIRE implements a dual-check validation layer 
     2.  Does the output violate any Sovereign Principles?
     3.  Does the output match the provided technical constraints 1:1?
 *   **The Kill-Switch**: If the verification fails, the Logician kills the process, logs an "Integrity Discrepancy" to the Ledger, and forces the system into a **Cautious State**.
-### 11. Sovereignty Linter (Deterministic Integrity Scan)
-To distinguish between "Reasoned Compliance" and "Deterministic Enforcement," SIRE mandates a non-stochastic validation layer.
+### 11. Sovereignty Linter (MANDATORY - Digital Police)
+**Architectural Requirement**: To distinguish between "Reasoned Compliance" and "Deterministic Enforcement," SIRE mandates a non-stochastic validation layer as a mandatory security boundary.
 
 *   **The Linter**: All AI-generated executable code, shell commands, or system mutations **MUST** pass an automated, rules-based validation scan prior to execution.
 *   **Non-LLM Logic**: This scan **MUST** be performed by a deterministic, non-AI process (e.g., Regex, Static Analysis, or a compiled binary tool). This ensures that "hallucinated compliance" cannot bypass the framework's core rules.
