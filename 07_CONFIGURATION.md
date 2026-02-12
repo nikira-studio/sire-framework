@@ -134,6 +134,15 @@ Define universal governance thresholds that replace user profiles.
 
 ```yaml
 threshold_presets:
+  # SIRE Lite Preset (Adoption-focused with minimal friction)
+  sire_lite:
+    name: "SIRE Lite"
+    mfa_trigger_score: 0.9
+    ledger_trigger_score: 0.7
+    level_3_manifest_score: 0.8
+    auto_approve_level_3_threshold: 0.4
+    description: "Developer/hobbyist preset with low-friction. Auto-approves Level 3 for low-impact (S < 0.4). Suitable for experimentation and rapid prototyping."
+  
   # Low-Friction Preset (Minimal approvals for low-impact operations)
   low_friction:
     name: "Low-Friction Threshold"

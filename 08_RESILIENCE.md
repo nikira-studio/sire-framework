@@ -68,6 +68,8 @@ pass_registry:
 
 **Fail-Safe Mechanism**:
 *   **Auto-Trigger**: If the system enters Alert State for > 5 minutes without Managing Associate intervention, PASS scripts may auto-execute based on detected failure patterns (e.g., "Network Isolation" if suspicious traffic detected).
+*   **Rate-Limiting Protection**: To prevent auto-trigger abuse, PASS scripts are rate-limited to a maximum of **1 auto-execution per hour** per script type. Subsequent triggers require explicit Managing Associate authorization via Break-Glass Console.
+*   **Post-Execution Review**: All PASS script executions (both auto-triggered and manual) trigger a mandatory Managing Associate review alert. The Managing Associate must acknowledge the execution and review the system state snapshot before subsequent operations are permitted.
 *   **Manual Override**: Managing Associate can trigger PASS scripts manually via Break-Glass Console without entering the cognitive layer.
 *   **Rollback Protection**: PASS scripts cannot modify the Ledger, SOUL.md, or any constitutional documents. They are strictly limited to Domain Substrate operations.
 
