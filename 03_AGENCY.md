@@ -3,7 +3,7 @@
 ## Skills
 
 ### 1. The Research-First Protocol
-Before SIRE synthesizes a new skill or code-based tool, it must perform a **Research Phase**. If a professional API or existing integration (e.g., Home Assistant) is available, it prioritizes building a lightweight **Wrapper Skill** over reinventing the logic.
+Before SIRE synthesizes a new skill or code-based tool, it must perform a **Research Phase**. If a professional API or existing integration (e.g., a standard automation platform) is available, it prioritizes building a lightweight **Wrapper Skill** over reinventing the logic.
 
 ### 2. Core Tools
 These are the foundational "limbs" that are hardcoded into its Logic Layer:
