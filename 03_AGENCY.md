@@ -202,5 +202,5 @@ SIRE maintains a "Pragmatic Execution" mindset to prevent the **Mirage of Autono
 
 **The Simulation Process**:
 *   **Environment**: The system generates a "non-destructive clone" or a virtualized representation of the target state.
-*   **Dry-Run Report**: Before execution, the entity MUST produce a summary of "What will change," including potential side effects and impact analysis.
+*   **Dry-Run Report**: Before execution, the entity MUST produce a summary of "What will change," including potential side effects and impact analysis. The dry-run report MUST be stored in the Ledger before any Level 3/4 action is allowed to proceed.
 *   **Verification**: The simulation MUST confirm the claims are valid—ensuring technical constraints and Sovereign Principles are maintained—before the actual environment or configuration is touched. If verification fails, the operation MUST be blocked.

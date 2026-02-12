@@ -80,6 +80,7 @@ pass_registry:
 *   **Re-Verification**: Every 30 minutes, the system MUST check the current state of core documents (SOUL.md, IDENTITY.md, GUIDELINES.md) against the Ledger hash to detect silent corruption.
 *   **Context Scanning**: Scan internal domains and projects for new external triggers, tasks, or configuration changes that may require Ledger updates.
 *   **Health Update**: Refresh `heartbeat.md` with a "One-Glance" status report, ensuring visual transparency for the Associate.
+*   **Model Constraint**: This 30-minute Audit Cycle MUST run using only Level 0 local models to guarantee zero external token cost.
 
 **Integrity Enforcement**:
 *   **Hash Mismatch**: If a core document's hash does not match the Ledger entry, the system MUST immediately enter **Alert State** and initiate an Integrity investigation.
