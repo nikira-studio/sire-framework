@@ -117,11 +117,23 @@ Memories are tagged with owners and session IDs.
 *   **Private**: Managing Associate memories are invisible to other Associates.
 *   **Shared**: Common facts are accessible to all authorized Associates.
 
-### 7. Automated Misattribution Detection
-To prevent cognitive leaks between Associates, the standard "Dream Mode" consolidation process must include:
-*   **PII Scan**: Verify no sensitive data (emails, keys) from Associate A is summarized into a global/shared memory.
-*   **Context Check**: If multiple Associates are discussed, semantic checks ensure actions are attributed to the correct actor ("User A said X", not "User B said X").
-*   **Quarantine**: Any memory flagged as ambiguous is quarantined for Managing Associate review instead of being ingested.
+### 7. Deterministic Misattribution Detection (Output-Side Sentinel Scans)
+To prevent "memory leaks" in multi-tenant environments where data from one Associate is accidentally summarized into another's context during "Dream Mode," the Security Sentinel implements **Output-Side Scanning**.
+
+**The Protocol**:
+*   **Input-Side Scan**: Security Sentinel scans incoming prompts for PII/credentials (existing mechanism).
+*   **Output-Side Scan**: Security Sentinel scans **Autonomous Summaries** before they are committed to Long-Term Memory (Vector DB).
+*   **Quarantine Rule**: If PII or Associate-specific tags from "Associate A" are detected in a summary intended for a "Global/Shared" space, the summary MUST be quarantined for manual review.
+
+**Deterministic Enforcement**:
+*   **Tag Validation**: Verify that all summaries tagged as "Global/Shared" contain no Associate-identifying markers (emails, IDs, unique tokens).
+*   **Ownership Attribution**: If multiple Associates are discussed in a single summary, verify that actions are attributed to the correct actor ("Associate A performed action X," not ambiguous "User said X").
+*   **Ambiguity Quarantine**: Any summary containing ambiguous attribution patterns (e.g., "they said," "the user") in a multi-tenant context MUST be rejected.
+
+**Multi-Tenant Guardrails**:
+*   **Private Space Exclusion**: Global/Shared summaries MUST NOT contain references to private memories from any Associate without explicit opt-in.
+*   **Cross-Associate Reference Validation**: If a summary references "Associate A" by name, verify the summary is tagged as "Private: Associate A" or "Shared: Explicit Opt-In."
+*   **Quarantine Workflow**: Quarantined summaries trigger an alert to the Managing Associate with the suspicious content redacted, allowing manual approval or deletion.
 
 ### 8. Soul Tempering (Adversarial Resilience)
 

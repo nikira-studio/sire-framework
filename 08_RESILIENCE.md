@@ -27,6 +27,50 @@ To prevent "Soul Bloat" and maintain token efficiency, SIRE implements a tiered 
 *   **Confidence Decay**: Memories or "Lessons Learned" that are not accessed or re-confirmed over a period of 30 days lose "Confidence" and are automatically pruned from the **Hot Context** (Tier 1) and archived into the **Cold Context** (Tier 3).
 *   **Summarization**: During "Dream Mode," the entity summarizes cold memory clusters into dense "Biological Nuggets" to preserve wisdom without the token cost of raw logs.
 
+### 4. PASS (Pre-Authorized Safety Scripts) Protocol
+To ensure that "Alert Mode" does not lead to a total functional shutdown (locking the brakes in the rain), SIRE implements a library of **Deterministic Fallbacks**—pre-written, non-AI scripts authorized to run during Alert states.
+
+**The Protocol**:
+*   **Deterministic Execution**: PASS scripts are pre-authorized, non-AI executables that maintain local integrity without real-time LLM reasoning (which is disabled during Alert states).
+*   **Authorization**: PASS scripts are signed during system initialization with the Managing Associate's authorization. They cannot be modified at runtime without a Level 4 Manifest.
+*   **Scope**: PASS scripts are limited to integrity-preserving actions on the Domain Substrate (e.g., local filesystem operations, service restarts, network isolation).
+
+**PASS Script Categories**:
+*   **Emergency Shutdown**: "Shut down internet gateway," "Terminate all external connections"
+*   **Local Backup**: "Verify local backup integrity," "Create emergency snapshot of critical state"
+*   **Service Recovery**: "Restart local inference service," "Clear corrupted cache files"
+*   **Diagnostic Capture**: "Export system state to air-gapped storage," "Capture crash dump for manual analysis"
+
+**Execution Requirements**:
+*   **No LLM Dependency**: PASS scripts must execute without requiring any cognitive layer or model inference.
+*   **Deterministic Outcome**: Each PASS script must have a deterministic, verifiable outcome (e.g., exit code 0 = success, non-zero = failure with specific error code).
+*   **Timeout Enforcement**: All PASS scripts must have hardcoded timeouts (default: 30 seconds) to prevent infinite loops.
+*   **Audit Trail**: PASS script execution is logged to the Ledger with script hash, outcome, and system state snapshot.
+
+**PASS Registry Structure**:
+```yaml
+pass_registry:
+  - name: "Emergency Internet Isolation"
+    id: "pass_001"
+    script_path: "/usr/local/bin/sire/pass/network_isolate.sh"
+    signature_hash: "SHA256(script_content)"
+    max_runtime_seconds: 30
+    required_state: "Alert"
+    allowed_parameters: ["force", "dry_run"]
+  - name: "Local Backup Verification"
+    id: "pass_002"
+    script_path: "/usr/local/bin/sire/pass/backup_verify.sh"
+    signature_hash: "SHA256(script_content)"
+    max_runtime_seconds: 60
+    required_state: "Alert"
+    allowed_parameters: ["backup_path"]
+```
+
+**Fail-Safe Mechanism**:
+*   **Auto-Trigger**: If the system enters Alert State for > 5 minutes without Managing Associate intervention, PASS scripts may auto-execute based on detected failure patterns (e.g., "Network Isolation" if suspicious traffic detected).
+*   **Manual Override**: Managing Associate can trigger PASS scripts manually via Break-Glass Console without entering the cognitive layer.
+*   **Rollback Protection**: PASS scripts cannot modify the Ledger, SOUL.md, or any constitutional documents. They are strictly limited to Domain Substrate operations.
+
 ## System Connectivity
 Ensure all core services are reachable and authenticated.
 *   **Intelligence Provider**: Verify API keys and network access for cloud levels.
