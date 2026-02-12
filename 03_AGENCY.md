@@ -9,12 +9,12 @@ Before SIRE synthesizes a new skill or code-based tool, it must perform a **Rese
 These are the foundational "limbs" that are hardcoded into its Logic Layer:
 *   **Kanban**: Task management.
 *   **Memory**: Storing/retrieving facts.
-*   **System**: Container management, Shell execution.
+*   **System**: Environment management, intent execution.
 
 ### 3. Skill Verification Pattern (SVP)
 Before executing any skill (especially those sourced externally), SIRE must perform a security audit:
 1.  **Scanner**: Security Sentinel scans for dangerous patterns:
-    *   External downloads (e.g., `curl | bash`, `wget`).
+    *   External downloads (e.g., unauthorized data retrieval).
     *   Quarantine/Security removals (e.g., `xattr -d`).
     *   Encoded/Obfuscated payloads.
     *   Credential access attempts.
@@ -40,7 +40,7 @@ Before executing any skill (especially those sourced externally), SIRE must perf
 
 Before any **Level 2 or 3** action is initiated, the entity must perform a **Link Validation**:
 *   **Verification**: Test API connectivity, credential validity, and permission scopes **prior** to consuming the Privacy Budget or initiating high-level cloud reasoning.
-*   **Protocol**: If a validation check fails, SIRE must report the environmental failure to the Managing Associate and pause the task. This protects the **Integrity** of the host and prevents wasting resources on tasks doomed by infrastructure issues.
+*   **Protocol**: If a validation check fails, SIRE must report the environmental failure to the Managing Associate and pause the task. This protects the **Integrity** of the domain and prevents wasting resources on tasks doomed by environmental issues.
 
 ### Manager-Specialist Protocol
 Communication between the **Main Soul** (Manager) and a **Specialist** **MUST** be structured via a deterministic handoff to prevent prompt drift.
@@ -57,7 +57,7 @@ Communication between the **Main Soul** (Manager) and a **Specialist** **MUST** 
     "success_criteria": ["exit_code:0", "file_exists:/logs/integrity_report.log"]
   },
   "constraints": {
-    "allow_network": true,
+    "allow_external_comms": true,
     "timeout_ms": 30000,
     "read_only": false
   },
@@ -120,10 +120,10 @@ The `HeartbeatService` manages the entity's level of consciousness and ensures p
 2. **Extraction**: Discrete facts extracted and stored in structured layers.
 3. **Flush**: Short-term conversation buffer cleared for next interaction.
 
-### 2. GPU-Aware VRAM Priority
-To ensure hardware integrity and service availability for Associates:
-*   **VRAM Priority Levels**: Background "Dreaming" (memory/audit scanning) is a **Level 3 (Pre-emptible)** task.
-*   **Instant Yield**: SIRE must instantly yield the host GPU if an Associate initiates a session or if other host resources require them.
+### 2. Processing-Aware Memory Priority
+To ensure physical integrity and service availability for Associates:
+*   **Memory Priority Levels**: Background "Dreaming" (memory/audit scanning) is a **Level 3 (Pre-emptible)** task.
+*   **Instant Yield**: SIRE must instantly yield primary resources if an Associate initiates a session or if other domain resources require them.
 
 ### 3. Failure Analysis (Curiosity)
 While in "Dream Mode", SIRE scans logs and trace records for inefficiencies or repeated failures.
@@ -140,4 +140,4 @@ To satisfy the principle of **Integrity**, all high-impact or destructive operat
 
 *   **The Simulation**: The system generates a "non-destructive clone" or a virtualized representation of the target state.
 *   **Dry-Run Report**: Before execution, the entity must produce a summary of "What will change," including potential side effects.
-*   **Verification**: The simulation must confirm the "math maths"—ensuring technical constraints and Sovereign Principles are maintained—before the actual hardware or configuration is touched.
+*   **Verification**: The simulation must confirm the claims are valid—ensuring technical constraints and Sovereign Principles are maintained—before the actual environment or configuration is touched.
