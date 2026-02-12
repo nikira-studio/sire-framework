@@ -37,3 +37,13 @@ The dashboard is partitioned into modular functional layers:
 *   **Docs**: Standard OpenAPI documentation.
 *   **Auth**: Token-based authentication required for all non-local requests.
 *   **Environment Parity**: All paths resolved relative to the project root to ensure stability across Container and Local development.
+## 5. Ontological Transparency (Bi-Directional Sync)
+To maintain **Sovereignty** and **Integrity**, the entity's soul must be auditable via human-readable formats without technical friction.
+
+*   **Dual-Layer Storage Strategy**:
+    *   **The Substrate (SQLite/Vector)**: High-performance indices used for RAG, contextual retrieval, and state logic.
+    *   **The Interface (Markdown)**: The "Source of Truth" for human review. All core state (Soul, Identity, Guidelines) MUST be mirrored as `.md` files.
+*   **The Bi-Directional Watcher**:
+    *   **Human-to-AI**: When a Managing Associate edits a Markdown file (e.g., via Obsidian), the system MUST detect the change, verify it against constitutional rules, and update the substrate index.
+    *   **AI-to-Human**: Any AI-driven state change (e.g., evolution of a trait) MUST be immediately written back to the Markdown interface for immediate audit.
+*   **Implementation**: This bridge ensures that the entity's "personality" is not trapped inside a binary database, but exists as a transparent, editable, and versionable set of documents.

@@ -54,3 +54,11 @@ These augments are **optional extensions** to the core SIRE Framework. While not
     *   **Semantic Stripping**: A deterministic utility that removes natural language linguistic filler, preserving only the high-value intent and technical parameters.
     *   **The IPL Protocol**: A "Mind-to-Mind" layer where sub-processes exchange instructions using high-context structural tokens (shorthand YAML/JSON).
     *   **Context Density**: Prioritizes "Pure Signal" payloads that allow for deeper reasoning chains within the same terminal context window.
+### 10. The Augment Forge (Self-Directed Evolution)
+*   **Goal**: Allow the entity to safely self-evolve by building new skills and adapters while maintaining **Deterministic Integrity**.
+*   **The Protocol**:
+    1.  **Propose**: Generate the new logic or adapter in an isolated `tmp_forge/` directory.
+    2.  **Lint**: Run the **Sovereignty Linter** (Section 11, Doc 05) to check for prohibited imports, hardcoded keys, or non-deterministic loops.
+    3.  **Simulate**: Execute the logic in a **Sandboxed Simulation** (Section 5, Doc 03) to verify behavior against constraints.
+    4.  **Confirm**: Subject the final artifact to 100% hash verification and log a Level 4 entry in the Ledger before committing it to the production skill registry.
+*   **Integrity Constraint**: The Forge SHALL NOT modify the **Sovereign Core** documents (01-10) autonomously. Only Staff Associates and Augments may be "forged."

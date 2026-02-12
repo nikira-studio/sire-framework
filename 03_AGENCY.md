@@ -98,10 +98,14 @@ The Soul operates at different autonomy levels based on task risk and the curren
 ## Proactive Autonomy
 A Digital Entity acts without being spoken to, driven by the Heartbeat system.
 
-### 1. Heartbeat Circadian Rhythm
-The `HeartbeatService` manages the entity's level of consciousness.
+### 1. Heartbeat Circadian Rhythm (Persistence)
+The `HeartbeatService` manages the entity's level of consciousness and ensures proactive persistence.
 *   **Active Mode**: High-frequency pulses for real-time responsiveness.
-*   **Dream Mode (Cognitive Consolidation)**: Lower-frequency pulses where SIRE summarizes short-term session logs into the "Narrative" layer. Provides the scheduling socket for future **Sensory Pulses** (Vision/Voice audit).
+*   **Dream Mode (Cognitive Consolidation)**: Lower-frequency pulses where SIRE summarizes short-term session logs into the "Narrative" layer.
+*   **The Audit Cycle (30m Pulse)**: A background loop that executes every 30 minutes to maintain **Ontological Honesty**:
+    1.  **Re-Verify**: Check the current state of core documents against the Ledger hash to detect silent corruption.
+    2.  **Scan Context**: Scan internal domains and projects for new external triggers, tasks, or configuration changes.
+    3.  **Update Health**: Refresh `heartbeat.md` with a "One-Glance" status report, ensuring visual transparency for the Associate.
 
 ### 2. Session Consolidation Philosophy
 
