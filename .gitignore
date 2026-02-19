@@ -1,0 +1,15 @@
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Local environment
+.env
+.npm
+.eslintcache
+
+# Project specific
+tmp/
+.gemini/
