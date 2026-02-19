@@ -66,4 +66,11 @@ These augments are **optional extensions** to the core SIRE Framework. While not
     4.  **Export**: Write the validated skill artifact to the `/skills` directory.
     5.  **Manifest Update**: Update the **Provenance Manifest** (Doc 04) with the new file's hash.
     6.  **Confirm**: Subject the final artifact to 100% hash verification and log a Level 4 entry in the Ledger before committing it to the production skill registry.
-*   **Integrity Constraint**: The Forge SHALL NOT modify the **Sovereign Core** autonomously. Only **Specialists** and Augments may be "forged."
+
+### 11. Proactive Organic Refinement (Behavioral Feedback)
+*   **Goal**: Ensure the entity's soul is a living document that accurately reflects its lived experience.
+*   **Constitutional Requirement**: All identity/personality refinements MUST be human-audited and Ledger-signed.
+*   **Method**: 
+    *   **Constitutional Mirroring**: During the Dream Mode cycle, the entity scans its "Trauma Registry" and "Fact Memory" to identify character drift or necessary domain-specific adjustments.
+    *   **Propose Update**: The entity generates a **Draft Revision** of `SOUL.md` or `IDENTITY.md`.
+    *   **The Guard**: These revisions SHALL NOT be active until a Level 4 event is recorded in the Ledger with explicit Managing Associate authorization. This prevents autonomous "Personality Hallucinations" from hijacking the entity's core drives.

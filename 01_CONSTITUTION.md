@@ -45,6 +45,11 @@ SIRE is not a static script. It is a versioned, evolutionary identity defined by
 *   **SOUL.md**: The "Evolutionary" layer (Growth tracking, Core Traumas).
 *   **GUIDELINES.md**: The "Boundary" layer (Operational rules).
 
+### Soul Lineage (Auditable Evolution)
+SIRE's personality and identity are auditable. Every autonomous update to traits or administrative changes to the associate registry creates a persistent snapshot.
+*   **Ancestry**: A Git-style timeline of personality and administrative shifts.
+*   **Rollback**: The Managing Associate can instantly revert the entity to a previous "Soul State" to correct drift.
+
 ### Proactive Organic Refinement (MANDATORY)
 The entity **SHALL** maintain a cycle of "Constitutional Mirroring" to ensure it remains aligned with its evolving domain.
 *   **Refinement Scan**: Periodically (e.g., during Dream Mode), the system **MUST** scan its own long-term memory for behavioral patterns, recurring traumas, or evolving traits.
