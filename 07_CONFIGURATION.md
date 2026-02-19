@@ -178,11 +178,11 @@ universal_enforcement:
   min_score_for_always_mfa: 0.5
 ```
 
-## Context Triggers (Knowledge Injection)
-To prevent "Memory Drift" and ensure the entity always has the correct Single Source of Truth, SIRE supports **Context Triggers**.
+## Just-In-Time (JIT) Context Protocol (MANDATORY)
+To maintain strict **Sovereignty** and prevent "Memory Drift", SIRE implementations **SHALL** transition from global context loading to a **Just-In-Time (JIT) Context Injection** model based on the "Need to Know" principle.
 
-*   **Goal**: Automatically inject relevant documentation based on task keywords.
-*   **Mechanism**: A local Level 0 scan of Associate input.
+*   **The Law**: The system **MUST NOT** load documentation or memory clusters into the cognitive layer by default. Context SHALL only be injected when triggered by a deterministic local scan of the current task.
+*   **Mechanism**: A local Level 0 scan of Associate input identifies keywords or intent patterns.
 *   **The Registry**: Defined in `config/triggers.yaml`.
 *   **Example**:
     ```yaml
@@ -192,7 +192,7 @@ To prevent "Memory Drift" and ensure the entity always has the correct Single So
       - keywords: ["security", "connectivity", "communications"]
         inject: ["skills/SEC_OPS.md"]
     ```
-*   **The Result**: The Specialist's context window is automatically "pre-loaded" with the required manual, ensuring they never operate on generic (potentially hallucinated) knowledge.
+*   **The Result**: The **Specialist's** context window is automatically "pre-loaded" with the required manual only when relevant, ensuring they never operate on generic or hallucinated knowledge while minimizing the exposure of the Sovereign Core.
 
 ## Environment Variables (`.env`)
 Runtime secrets and domain settings.

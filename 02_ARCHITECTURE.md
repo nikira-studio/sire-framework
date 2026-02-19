@@ -16,12 +16,12 @@ The Sovereign Entity is composed of several independent but interconnected syste
 
 ### 3. The Heart (Active Integrity Engine)
 *   **HeartbeatService**: A background loop that maintains the "Circadian Rhythm". In SIRE, this is not a passive pulse but an **Active Integrity Auditor (The Internal Affairs Bureau)**.
-    *   **Proactive Verification**: The system is designed to independently verify the four pillars periodically (Recommended: 30m in Dream Mode, 60s in Active):
+    *   **Proactive Verification**: The system is designed to independently verify the four pillars periodically (MANDATORY: 30m in Dream Mode, 60s in Active):
         1.  **Integrity**: Are the hashes of the Core Files (`SOUL.md`, `IDENTITY.md`, `ASSOCIATES.md`, `GUIDELINES.md`) still valid against the Ledger?
         2.  **Agency**: Are there any "Zombie Tasks" (orphaned processes) or stalled cycles in the hash chain?
         3.  **Resilience**: Are the scheduled **Fire Drills** (if implemented) passing?
+    *   **Reflex-Pinned Architecture (MANDATORY)**: To prevent **Sovereignty Leaks** and API cost-drain, the `HeartbeatService` and all associated background integrity audits **MUST** be strictly isolated to **Level 0 (Local/Reflex)** intelligence. The system SHALL NOT use cloud reasoning for routine status checks or maintenance pulses.
     *   **Auto-Alert**: If the Heartbeat detects a discrepancy, it MUST automatically force the system into **Alert State**, even if no human query is currently active.
-    *   **Resource-Aware**: All background maintenance and consolidated "Dreaming" are strictly executed by **Level 0 Local Models** to ensure zero idle token costs.
     *   **Operational Priority**: Deferment logic if domain resource utilization is high. Monitors processing and memory priority to yield resources to other high-load activities.
     *   **Active Mode**: Fast pulse (e.g., 60s) during Associate interaction.
     *   **Dream Mode**: Slow pulse (e.g., 30m) for memory consolidation and deep analysis.

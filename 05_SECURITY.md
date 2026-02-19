@@ -96,6 +96,7 @@ Regardless of technology stack, every implementation MUST verify these requireme
 - ONE Soul = ONE Managing Associate (singular authority).
 - Level 4 operations require Multi-Factor Approval.
 - Ledger provides immutable provenance for all actions.
+- **Reflex-Pinned Heartbeat**: All background integrity pulses MUST be locked to Level 0 (Local) intelligence to prevent API cost-drain or sovereignty leaks.
 
 ### 5. Known Attack Patterns
 
