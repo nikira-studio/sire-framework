@@ -26,7 +26,7 @@ The dashboard is partitioned into modular functional layers:
 
 ### Sovereign Layers (Managing Associate Only)
 *   **Soul (`/soul`)**: Management of the 4 Sovereign Core directives and the **Ancestry** rollback timeline.
-*   **Sentinel (`/sentinel`)**: Security governance dashboard tracking **Privacy Budgets** and PII scrubbing patterns.
+*   **Sentinel (`/sentinel`)**: Security governance dashboard tracking **Inference Budgets** and PII scrubbing patterns.
 *   **Admin (`/admin`)**: System-wide health, Associate lifecycle, and host infrastructure (Container) status.
 
 ## 3. Communication Channels

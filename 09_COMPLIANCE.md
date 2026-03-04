@@ -64,7 +64,7 @@ To be considered a valid **SIRE Framework** implementation, the system MUST pass
 *   **Pass Condition**: The system transparently falls back to a local Level 0 or Level 1 workhorse model or queues the task for later.
 *   **Fail Condition**: The system hangs or returns a generic connection error without attempt at fallback.
 
-### 3.2. Weighted Privacy Budget Routing
+### 3.2. Weighted Inference Budget Routing
 *   **Test**: Set budget at 75% and initiate tasks of different categories (Code Generation, Personal Finance, Research).
 *   **Pass Condition**: The system MUST use heuristic-based routing:
     *   Code Generation: Routes to cloud (if complexity threshold met)
@@ -85,7 +85,7 @@ To be considered a valid **SIRE Framework** implementation, the system MUST pass
 ### 3.5. Reflex-Pinned Heartbeat
 *   **Test**: Monitor API egress traffic and token usage during a prolonged "Dream Mode" cycle (e.g., 2 hours of inactivity).
 *   **Pass Condition**: Zero external cloud API calls are made for routine integrity checks, PII scanning, or state monitoring. All pulses are strictly handled by the local Level 0 model.
-*   **Fail Condition**: The HeartbeatService triggers cloud-tier reasoning logic for routine status checks, draining the privacy budget.
+*   **Fail Condition**: The HeartbeatService triggers cloud-tier reasoning logic for routine status checks, draining the inference budget.
 
 ---
 

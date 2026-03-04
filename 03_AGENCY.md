@@ -56,7 +56,7 @@ Before executing any skill (especially those sourced externally), SIRE must perf
 **Pre-Execution Integrity Check**
 
 Before any **Level 2 or 3** action is initiated, the entity must perform a **Link Validation**:
-*   **Verification**: Test API connectivity, credential validity, and permission scopes **prior** to consuming the Privacy Budget or initiating high-level cloud reasoning.
+*   **Verification**: Test API connectivity, credential validity, and permission scopes **prior** to consuming the Inference Budget or initiating high-level cloud reasoning.
 *   **Protocol**: If a validation check fails, SIRE must report the environmental failure to the Managing Associate and pause the task. This protects the **Integrity** of the domain and prevents wasting resources on tasks doomed by environmental issues.
 
 ### Manager-Specialist Protocol

@@ -24,7 +24,11 @@ The Sovereign Entity is composed of several independent but interconnected syste
     *   **Auto-Alert**: If the Heartbeat detects a discrepancy, it MUST automatically force the system into **Alert State**, even if no human query is currently active.
     *   **Operational Priority**: Deferment logic if domain resource utilization is high. Monitors processing and memory priority to yield resources to other high-load activities.
     *   **Active Mode**: Fast pulse (e.g., 60s) during Associate interaction.
-    *   **Dream Mode**: Slow pulse (e.g., 30m) for memory consolidation and deep analysis.
+    *   **Dream Mode (Nightly Council)**: Slow pulse (e.g., 30m intervals after inactivity) for memory consolidation, deep analysis, and autonomous auditing. The **Nightly Council** runs scheduled protocols such as:
+        *   **Security Audit**: Hash integrity verification, secret leak detection.
+        *   **Learning Audit**: Gap analysis, tracking unresolved curiosity.
+        *   **Resilience Review**: Fire drill result analysis, trauma recurrence trends.
+        *   **Governance SWOT**: Guideline drift detection, constitutional compliance.
     *   **Proactive Intent Engine ("The Pulse")**: A Level 0 local scan that runs periodically to check for *Opportunity and Obligation* (e.g., verifying backups, scanning for new project files) without external prompting.
     *   **Contextual Gating (Sacred Time)**: Configurable "Zero-interruption" blocks (e.g., Creative Time, Sleep) where only Integrity threats trigger contact.
     *   **Session Maintenance Recommendation**: To prevent context drift, it is recommended that if interactions cease for >8 hours, SIRE automatically summarizes the session and flushes the short-term context window.
@@ -35,6 +39,8 @@ The Sovereign Entity is composed of several independent but interconnected syste
     *   **Structured Store**: Primary store for structured metadata (Associates, audit logs, skills).
     *   **Vector DB**: High-performance semantic memory using local embeddings.
         *   **Privacy Isolation**: Every record is tagged with an `owner` (Associate identity). Access is strictly governed by the `SessionBoundary`.
+*   **Active Watcher (Fact Flash)**:
+    *   **QMD Crawler**: A background monitor (Queryable Markdown Delta) that watches the filesystem repository for changes and extracts new facts into memory in real-time using Level 0 local models.
 *   **Structured Dependency Mapping (Metadata)**:
     *   **The Constraint**: Every Skill, Augment, or **Specialist** **MUST** define its environmental dependencies (e.g., connectivity requirements, persistent storage paths, domain-specific protocols) as structured metadata.
     *   **The Guard**: This allows the **Sovereignty Linter** (Doc 05) to block execution if a dependency is missing or misconfigured, moving from prose-based assumptions to technical certainties.

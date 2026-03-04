@@ -28,7 +28,7 @@ This release transitions the framework from a design pattern into a **hardened m
 *   **Cryptographic Audit**: Mandates **JCS (RFC 8785)** for cross-platform Ledger verification and **Provenance Manifests** for file-system integrity.
 *   **Sovereign Restore**: Formalized the **Constitutional Rollback Protocol** ("Undo" button) for the entity's soul.
 
-### 4. **Privacy Budget** (Weighted Sovereignty Exposure)
+### 4. **Inference Budget & Budget Guard** (Weighted Sovereignty Exposure)
 Track when data leaves your domain with intelligent routing:
 - Heuristic-based decision trees route tasks by category (Code Generation, Research, Finance, PII)
 - Dynamic routing curves (aggressive, balanced, conservative) adjust behavior as budget depletes
@@ -102,7 +102,7 @@ Immutable log of every decision with:
 - **Tiered Archival & Pruning**: Merkle Root preservation for long-term storage efficiency
 - Impact-Based Thresholds determine logging requirements
 
-### 5. **Privacy Budget** (Weighted Sovereignty Exposure)
+### 5. **Inference Budget & Budget Guard** (Weighted Sovereignty Exposure)
 Track when data leaves your domain with intelligent routing:
 - Heuristic-based decision trees route tasks by category (Code Generation, Research, Finance, PII)
 - Dynamic routing curves (aggressive, balanced, conservative) adjust behavior as budget depletes
@@ -123,7 +123,7 @@ Track when data leaves your domain with intelligent routing:
 
 ### 2. The Shield (Security & Audit)
 4. **[The Ledger](04_LEDGER.md)** - Immutable Audit Protocol and Learning Capture.
-5. **[Security](05_SECURITY.md)** - Sentinel, Privacy Budget, and Break-Glass Protocol.
+5. **[Security](05_SECURITY.md)** - Sentinel, Inference Budget, and Break-Glass Protocol.
 
 ### 3. The Hands (Interface & Config)
 6. **[Interfaces](06_INTERFACES.md)** - Dashboard, CLI, and visual signaling.
@@ -136,14 +136,14 @@ Track when data leaves your domain with intelligent routing:
 
 ---
 
-## Quick Example: Weighted Privacy Budget in Action
+## Quick Example: Weighted Inference Budget in Action
 
 ```
 Normal Day (Budget 0-50%):
   - User asks question
   - Heuristic evaluation: Code Generation (Low Sensitivity/High Complexity)
   - Routing: Cloud model preferred (fast, high-quality)
-  - Track in privacy budget: 2,500 tokens used
+  - Track in inference budget: 2,500 tokens used
 
 Budget at 75% (Conservative Curve):
   - Heuristic evaluation: Code Generation (Low Sensitivity/High Complexity)
@@ -213,7 +213,7 @@ Choose tools you know (JS, Go, Rust, or any language)
 - Operational State Monitor (track system health)
 - Agency Level routing (decide what needs approval)
 - Ledger logging (audit everything)
-- Privacy Budget tracking (count external calls)
+- Inference Budget tracking (count external calls)
 
 ### 5. Verify Constitutional Compliance
 Use the checklist to make sure you've implemented the core patterns
@@ -240,7 +240,7 @@ threshold_presets:
     auto_approve_level_3_threshold: 0.4  # Auto-approve Level 3 for low-impact (S < 0.4)
 ```
 
-**2. Set Privacy Budget Routing Strategy in `config/models.yaml`**:
+**2. Set Inference Budget Routing Strategy in `config/models.yaml`**:
 
 ```yaml
 routing_strategy:
@@ -258,14 +258,14 @@ routing_strategy:
 | **MFA Required** | Only for S ≥ 0.9 | For S ≥ 0.3 |
 | **Ledger Logging** | For S ≥ 0.7 | For S ≥ 0.1 |
 | **Level 3 Manifests** | Auto-approve for S < 0.4 | Always required |
-| **Privacy Budget** | Aggressive routing | Conservative routing |
+| **Inference Budget** | Aggressive routing | Conservative routing |
 | **Best For** | Development, prototyping, trusted environments | Production, high-security, audit requirements |
 
 ### SIRE Lite Deployment Checklist
 
 - ✅ Threshold preset set to `sire_lite` in `threshold_presets.yaml`
 - ✅ Routing strategy set to `aggressive` in `models.yaml`
-- ✅ Privacy budget monitoring enabled (optional for development)
+- ✅ Inference budget monitoring enabled (optional for development)
 - ✅ Security Sentinel configured for input/output-side scans
 - ✅ Ledger initialized with JCS canonicalization
 

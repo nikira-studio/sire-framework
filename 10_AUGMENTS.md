@@ -56,7 +56,7 @@ These augments are **optional extensions** to the core SIRE Framework. While not
     *   **Cognitive Density**: Prioritizes "Pure Signal" payloads that allow for deeper reasoning chains within the same cognitive context window.
 ### 10. The Augment Forge (Self-Directed Evolution)
 *   **Goal**: Allow the entity to safely self-evolve by building new skills and adapters while maintaining **Deterministic Integrity**.
-*   **Architectural Requirement: Skill-as-a-File**: To prevent "Black Box" capabilities, all synthesized or added skills **MUST** exist as human-readable files (Markdown or YAML) in the `/skills` directory.
+*   **Architectural Requirement: Skill Templates & Instances**: To prevent "Black Box" capabilities and securely manage multi-tenant tool exposure, skills MUST be split into Templates (generic logic definitions/blueprints in the repository) and Instances (deployments scoped to specific users/systems with isolated Vault credentials). All synthesized or added skill templates **MUST** exist as human-readable files (Markdown or YAML) in the `/skills` directory.
 *   **The Logic**: This ensures a "Sovereignty Audit" where a Managing Associate can inspect the folder and see exactly what the AI is capable of (e.g., verifying shell access or API permissions). No "shadow skills" may exist purely in a database.
 
 *   **The Protocol**:

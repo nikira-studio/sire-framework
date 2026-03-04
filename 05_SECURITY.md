@@ -6,15 +6,15 @@
 ### 1. The Sentinel (Intelligent Routing)
 Every Associate input passes through the **Security Sentinel** before reaching an LLM. This logic is governed via the **Sentinel Dashbaord (`/sentinel`)**.
 
-1.  **Tier 0 (Total Isolation) Pattern**: A **Hard-Gate Regex/Linter** MUST sit *before* any routing logic or LLM interaction. If specific patterns (e.g., PII, Credentials, private filesystem paths) are detected, the system MUST physically truncate the routing path to **Local Providers Only**. This bypasses the "Privacy Budget" logic entirely, turning privacy into a physical law of the system.
+1.  **Tier 0 (Total Isolation) Pattern**: A **Hard-Gate Regex/Linter** MUST sit *before* any routing logic or LLM interaction. If specific patterns (e.g., PII, Credentials, private filesystem paths) are detected, the system MUST physically truncate the routing path to **Local Providers Only**. This bypasses the "Inference Budget" logic entirely, turning privacy into a physical law of the system.
 2.  **Regex Scan**: Checks for obvious secrets and dangerous patterns (e.g., `curl | bash`, `sudo`). If found -> **FORCE LEVEL 0 (LOCAL)**.
 3.  **Skill Scan**: If the input is a skill definition, it is parsed for external dependencies or shell commands. If detected -> **FORCE LEVEL 3 (APPROVAL)**.
 4.  **Model Scan**: A local Level 0 model classifies "Is this sensitive or high-risk?". If yes -> **FORCE LEVEL 0 (LOCAL)**.
 5.  **Default**: If safe, route to the optimal intelligence level.
 
-### 2. Privacy Budget: Awareness over Restriction
+### 2. Inference Budget (Budget Guard): Awareness over Restriction
 
-Every external API call is a sovereignty trade. The Privacy Budget makes this trade explicit and measurable.
+Every external API call is a sovereignty trade. The Inference Budget (and Budget Guard) makes this trade explicit and measurable.
 
 **The Philosophy**: Awareness, not blocking. The cost is **Sovereignty Exposure**, not just tokens. The goal is to make the invisible visible.
 
@@ -23,7 +23,7 @@ Every external API call is a sovereignty trade. The Privacy Budget makes this tr
 - **Model 2: Dollar-Based**: Track actual API costs.
 - **Model 3: Action-Based**: Track number of external calls.
 
-**Weighted Privacy Budget (Dynamic Routing)**:
+**Weighted Inference Budget (Dynamic Routing)**:
 The budget operates as a managed resource curve, not a cliff. As the budget depletes, the system uses **Heuristic-Based Decision Trees** to intelligently route tasks.
 
 **Heuristic-Based Decision Tree**:
@@ -79,7 +79,7 @@ Regardless of technology stack, every implementation MUST verify these requireme
 
 **Sovereignty**:
 - All data stored on Associate-controlled hardware.
-- Privacy Budget tracks all data leaving the host.
+- Inference Budget tracks all data leaving the host.
 - Local Level 0 models available for sensitive processing.
 
 **Integrity**:

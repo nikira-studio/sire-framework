@@ -104,7 +104,7 @@ intelligence_levels:
     max_tokens: 16384
     use_case: ["high_stakes_decisions", "soul_updates"]
 
-# Weighted Privacy Budget Configuration
+# Weighted Inference Budget Configuration
 routing_strategy:
   mode: "balanced"  # Options: aggressive, balanced, conservative
   budget_tracking: "token-based"  # Options: token-based, dollar-based, action-based

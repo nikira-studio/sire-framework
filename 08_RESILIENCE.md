@@ -132,8 +132,8 @@ If SIRE seems unresponsive, check the vitals.
 *   **Cause**: An Associate might be in "Dream Mode" (Deep sleep) and the wakeup trigger failed, OR the webhook is stale.
 *   **Fix**: Restart the entity service (e.g., `systemctl restart SIRE` or container restart).
 
-### 2. "I'm getting 'Privacy Budget Exceeded'."
-*   **Cause**: An Associate (or SIRE) has consumed the weighted privacy budget. The system is using heuristic-based routing to prioritize local processing.
+### 2. "I'm getting 'Inference Budget Exceeded'."
+*   **Cause**: An Associate (or SIRE) has consumed the weighted inference budget. The system is using the Budget Guard and heuristic-based routing to prioritize local processing.
 *   **Fix**:
     *   Wait for reset (Midnight UTC) for full restoration.
     *   Or execute `/admin reset_budget` (requires **Managing Associate** role).
