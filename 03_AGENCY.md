@@ -11,7 +11,16 @@ These are the foundational "limbs" that are hardcoded into its Logic Layer:
 *   **Memory**: Storing/retrieving facts.
 *   **System**: Environment management, intent execution.
 
-### 3. Skill Verification Pattern (SVP)
+### 3. Session-Scoped Capability Catalog (MANDATORY)
+**Architectural Requirement**: Tool and capability exposure **MUST** be gated per-session utilizing a "Session-Scoped Capability Catalog," rather than universally exposing all tools or relying purely on generalized prompt instructions.
+
+**Governance Pattern**:
+*   **Dynamic Exposure**: The entity's tools MUST be loaded or unloaded dynamically based on the current context, Associate permissions, and the system's **Operational State**.
+*   **Control Plane Meta-Tools**: The system SHOULD provide meta-tools (e.g., `load_tool`, `unload_tool`, `search_capabilities`) for the LLM to discover and request capabilities within its explicit session boundary.
+*   **Least Privilege Execution**: By defaulting to zero-trust tool access per session, accidental tool exposure is minimized and forensic clarity is radically improved.
+*   **Audit Trail**: Every capability load/unload action MUST be recorded in the Ledger, linking the capability state to a specific `session_id`.
+
+### 4. Skill Verification Pattern (SVP)
 Before executing any skill (especially those sourced externally), SIRE must perform a security audit:
 1.  **Scanner**: Security Sentinel scans for dangerous patterns:
     *   External downloads (e.g., unauthorized data retrieval).

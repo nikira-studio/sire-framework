@@ -134,7 +134,7 @@ To prevent "memory leaks" in multi-tenant environments where data from one Assoc
 **Multi-Tenant Guardrails**:
 *   **Private Space Exclusion**: Global/Shared summaries MUST NOT contain references to private memories from any Associate without explicit opt-in.
 *   **Cross-Associate Reference Validation**: If a summary references "Associate A" by name, verify the summary is tagged as "Private: Associate A" or "Shared: Explicit Opt-In."
-*   **Quarantine Workflow**: Quarantined summaries trigger an alert to the Managing Associate with the suspicious content redacted, allowing manual approval or deletion.
+*   **Quarantine Workflow**: Quarantined summaries trigger an alert to the Managing Associate with the suspicious content redacted. The system **MUST** maintain standard explicit quarantine states (`pending_review`, `approved`, `rejected`, `modified`) and retain the full review lifecycle metadata for the Ledger audit.
 
 ### 8. Soul Tempering (Recommended Best Practice)
 To prevent improved social engineering attacks against the LLM, mature implementations SHOULD consider **Mental Fortitude Training** during the "Dream Mode" cycle:

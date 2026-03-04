@@ -53,13 +53,13 @@ To prevent "Soul Bloat" and maintain token efficiency, SIRE implements a tiered 
 *   **Tier 3: Cold Context (The Ledger)**: Archival history and deep audit logs.
 *   **Heuristic: Confidence Decay**: To optimize context windows, memories or "Lessons Learned" that are not accessed or re-confirmed over a period (e.g., 30 days) may lose "Confidence" and be automatically pruned from the **Hot Context** (Tier 1) and archived into the **Cold Context** (Tier 3).
 *   **Optimization: Summarization**: During "Dream Mode," it is recommended that the entity summarizes cold memory clusters into dense "Biological Nuggets" to preserve wisdom without the token cost of raw logs.
-
+*   **Compaction Continuity (MANDATORY)**: Session compaction and summarization explicitly **MUST** preserve the active plan state. Outstanding operator-approved intent and unresolved steps MUST NOT be pruned, ensuring resilient behavior and preventing continuity loss during long-running autonomous tasks.
 ### 4. PASS (Pre-Authorized Safety Scripts) Protocol (MANDATORY)
 **Architectural Requirement**: To ensure that "Alert Mode" does not lead to a total functional shutdown (locking the brakes in the rain), SIRE implements a library of **Deterministic Fallbacks**—pre-written, non-AI scripts that are authorized to run during Alert states.
 
 **MANDATORY Protocol Requirements**:
 *   **Deterministic Execution**: PASS scripts MUST be pre-authorized, non-AI executables that maintain local integrity without real-time LLM reasoning (which is disabled during Alert states).
-*   **Authorization**: PASS scripts MUST be signed during system initialization with a Managing Associate's authorization. They cannot be modified at runtime without a Level 4 Manifest.
+*   **Authorization**: PASS scripts MUST be signed during system initialization with a Managing Associate's authorization. Artifact-level digest verification (verifying the absolute script binary/content hash) is **MANDATORY**. Optional signature chains and immutable registry records should supplement this. They cannot be modified at runtime without a Level 4 Manifest.
 *   **Scope**: PASS scripts MUST be limited to integrity-preserving actions on the Domain Substrate (e.g., local filesystem operations, service restarts, network isolation).
 
 **PASS Script Categories**:

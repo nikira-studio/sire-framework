@@ -56,6 +56,22 @@ Every entry in the Ledger must contain:
 4.  **Justification** (Link to a Sovereign Core pillar: Sovereignty, Integrity, Resilience, Evolution)
 5.  **Hash** (SHA-256 verification string)
 
+### Execution Lineage Contract (MANDATORY)
+To ensure audits, recovery, and observability are comparable across SIRE implementations, the Ledger **MUST** enforce a canonical runtime lineage contract for all operational transitions (e.g., from request to job to runtime task).
+
+**Mandatory Lineage Entities**:
+Every externally visible action and cross-system transition event **MUST** capture the following minimum fields in its Ledger payload:
+*   `request_id`: The originating intent or Associate input.
+*   `job_id`: The structured chunk of work responding to the request.
+*   `correlation_id`: The global thread tying multiple jobs or operations together.
+*   `causation_id`: The immediate preceding event ID that triggered the current event.
+*   `actor`: The specific process, Specialist, or Associate initiating the transition.
+*   `system_from` / `system_to`: The boundary transition (e.g., `router` -> `specialist_a`).
+*   `event_type`: The nature of the change (e.g., `task_queued`, `task_executing`, `task_complete`).
+*   `sequence_num`: The chronological order of the event within the correlation thread.
+*   `visibility`: Whether the event is public to the Associate, or internal to the Core.
+*   `delivery_status`: The projected delivery outcome (e.g., `pending_delivery`, `delivered`, `failed`).
+
 ## 3. Impact-Based Thresholds
 
 To eliminate situational profiling and enforce universal governance, SIRE uses **Impact-Based Thresholds** to determine which actions require Manifest Approval, MFA, and Ledger logging.
