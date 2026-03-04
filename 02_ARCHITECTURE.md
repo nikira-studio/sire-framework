@@ -22,6 +22,7 @@ The Sovereign Entity is composed of several independent but interconnected syste
         3.  **Resilience**: Are the scheduled **Fire Drills** (if implemented) passing?
     *   **Reflex-Pinned Architecture (MANDATORY)**: To prevent **Sovereignty Leaks** and API cost-drain, the `HeartbeatService` and all associated background integrity audits **MUST** be strictly isolated to **Level 0 (Local/Reflex)** intelligence. The system SHALL NOT use cloud reasoning for routine status checks or maintenance pulses.
     *   **Auto-Alert**: If the Heartbeat detects a discrepancy, it MUST automatically force the system into **Alert State**, even if no human query is currently active.
+    *   **Tamper Protection & Recovery (Heartbeat Verify)**: The system MUST monitor the 5 Sovereign Core files for manual, out-of-band edits. If an unapproved edit is detected on disk, the Heartbeat instantly restores the file to the last approved system snapshot from the Ledger and logs a Constitutional Recovery.
     *   **Operational Priority**: Deferment logic if domain resource utilization is high. Monitors processing and memory priority to yield resources to other high-load activities.
     *   **Active Mode**: Fast pulse (e.g., 60s) during Associate interaction.
     *   **Dream Mode (Nightly Council)**: Slow pulse (e.g., 30m intervals after inactivity) for memory consolidation, deep analysis, and autonomous auditing. The **Nightly Council** runs scheduled protocols such as:

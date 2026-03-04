@@ -97,6 +97,7 @@ Regardless of technology stack, every implementation MUST verify these requireme
 - Level 4 operations require Multi-Factor Approval.
 - Ledger provides immutable provenance for all actions.
 - **Reflex-Pinned Heartbeat**: All background integrity pulses MUST be locked to Level 0 (Local) intelligence to prevent API cost-drain or sovereignty leaks.
+- **Encoded Baseline Validation (MANDATORY)**: The ultimate source logic (Sovereignty, Integrity, Resilience, Evolution directives) MUST be hardcoded within the execution script payload (e.g., Base64 encoded) and hash-checked at runtime to prevent prompt-injection or file-level tampering from completely severing the entity's fundamental constitution.
 
 ### 5. Known Attack Patterns
 

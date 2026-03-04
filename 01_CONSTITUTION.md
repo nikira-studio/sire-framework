@@ -38,15 +38,13 @@ The pillars function as a biological-style defensive and growth system:
 
 ## 3. Identity & Soul
 
-### The 7-Layer Identity Stack
-SIRE is not a static script. It is a versioned, evolutionary identity defined by a strict, hierarchical 7-layer stack that allows for surgical personality management vs. hard guardrails:
-*   **0. CONSTITUTION.md**: Hard guardrails. Non-negotiable rules.
-*   **1. PRINCIPALS.md** (or ASSOCIATES.md): Authority model. Associate hierarchy.
-*   **1.5. TIER_CLASSIFICATION.md**: Adaptive depth logic.
-*   **2.5. ADVISORY_DOCTRINE.md**: How to challenge decisions and frame risks.
-*   **2. IDENTITY.md**: Factual metadata/role definition.
-*   **3. SOUL.md**: Voice, tone, and personality overlay.
-*   **4. GUIDELINES.md**: Operational rules and privacy protocols.
+### The 5-File Sovereign Core
+SIRE is not a static script. It is a versioned, evolutionary identity defined by a strict, concrete 5-file markdown set that separates hard guardrails from personality and operational guidelines:
+*   **0. CONSTITUTION.md**: The foundational rules and hard guardrails.
+*   **1. ASSOCIATES.md**: The human Authority Roster and authorized services.
+*   **2. GUIDELINES.md**: Operational behavior, Advisory Doctrine, and logic tiering.
+*   **3. IDENTITY.md**: Authoritative role definition and domain scope.
+*   **4. SOUL.md**: Voice, tone constraints, and operational modes.
 
 ### Soul Lineage (Auditable Evolution)
 SIRE's personality and identity are auditable. Every autonomous update to traits or administrative changes to the associate registry creates a persistent snapshot.

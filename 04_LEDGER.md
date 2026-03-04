@@ -154,6 +154,7 @@ To prevent "Instruction Drift," SIRE periodically reviews "Trauma" logs:
 *   **Constitutional Rollback Protocol**: Any change to the Sovereign Core (Identity, Soul, Guidelines, Associates) MUST create a restorable snapshot in the Ledger.
 *   **MANDATORY Requirement**: The system MUST be capable of reverting its entire cognitive and operational state to any previous hash-verified Ledger entry (including checkpoint boundaries).
 *   **Sovereign Restore**: If a change results in a "Trauma" event, a constitutional deadlock, or an unwanted identity shift, the Managing Associate MUST be able to trigger a **Sovereign Restore** to the last "Known Good" hash state.
+*   **Constitutional Recoveries (Auto-Restore)**: If the system's Heartbeat detects an out-of-band edit to the 5 Sovereign Core files without a valid Ledger manifest, it MUST automatically execute a Sovereign Restore to the active snapshot and log the event as a "Constitutional Recovery" to track tamper attempts.
 *   **Audit**: A restore event MUST be recorded as a Level 4 Ledger entry, preserving the timeline of the entity's evolution even through a recovery event.
 
 ## 7. The Provenance Manifest (MANIFEST.md)
